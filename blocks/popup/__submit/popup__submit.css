@@ -12,6 +12,11 @@
     border-radius: 2px;
 }
 
+.popup__submit:hover {
+    opacity: 0.8;
+    transition: opacity 0.8s ease-in-out;
+}
+
 @media (min-width: 1024px) {
     .popup__submit {
         font-size: 18px;
