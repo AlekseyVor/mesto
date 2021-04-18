@@ -1,0 +1,10 @@
+.popup__job {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0 22px 45px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgb(0,0,0,0.2);
+}
