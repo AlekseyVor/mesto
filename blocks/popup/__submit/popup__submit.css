@@ -11,3 +11,12 @@
     text-align: center; 
     border-radius: 2px;
 }
+
+@media (min-width: 1024px) {
+    .popup__submit {
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0 36px 37px;
+        padding: 14px 125px;
+    }
+}

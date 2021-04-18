@@ -1,9 +1,7 @@
 .header {
     padding: 28px 0 31px;
-    margin: 0;
     position: relative;
     z-index: 1;
-
 }
 
 .header::after {
@@ -16,4 +14,22 @@
     bottom: 0;
     right: 0;
     z-index: -1;
+}
+
+@media (min-width: 768px) {
+    .cover {
+        margin-bottom: 88px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header {
+        max-width: 880px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .header {
+        padding: 45px 0 40px;
+    }
 }

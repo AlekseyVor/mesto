@@ -9,3 +9,10 @@
     background-position: center;
     outline: none;
 }
+
+@media (min-width: 1024px) {
+    .profile__edit-button {
+        width: 24px;
+        height: 24px;
+    }
+}

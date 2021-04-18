@@ -2,11 +2,19 @@
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 2px;
-    min-width: calc(320px - 19px*2);
+    width: 282px;
     padding: 25px 0;
     background-color: #000000;
     background-image: url(../../../images/add-button.svg);
     background-repeat: no-repeat;
     background-position: center;
     outline: none;
+}
+
+@media (min-width: 1024px) {
+    .profile__add-button {
+        position: absolute;
+        width: 150px;
+        right: 0px;
+    }
 }

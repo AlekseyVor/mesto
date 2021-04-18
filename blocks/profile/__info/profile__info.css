@@ -6,3 +6,11 @@
     row-gap: 18px;
     padding: 26px 0 36px;
 }
+
+@media (min-width: 1024px) {
+    .profile__info {
+        column-gap: 16px;
+        padding: 0;
+        margin-left: 30px;
+    }
+}

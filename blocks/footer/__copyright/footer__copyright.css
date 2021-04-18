@@ -8,3 +8,10 @@
     margin: 0;
     padding: 0;
 }
+
+@media (min-width: 1024px) {
+    .footer {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

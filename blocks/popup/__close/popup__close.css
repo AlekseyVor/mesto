@@ -1,6 +1,6 @@
 .popup__close {
-    position: fixed;
-    top: calc(123px - 26px - 13px);
+    position: absolute;
+    top: -39px;
     background-image: url(../../../images/add-button.svg);
     width: 26px;
     height: 26px;
@@ -13,4 +13,13 @@
     background-color: transparent;
     align-self: flex-end;
     transform: rotate(45deg);
+}
+
+@media (min-width: 1024px) {
+    .popup__close {
+        width: 40px;
+        height: 40px;
+        top: -40px;
+        right: -40px;
+    }
 }

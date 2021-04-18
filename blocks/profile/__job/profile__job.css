@@ -8,3 +8,11 @@
     line-height: 17px;
     text-align: center;
 }
+
+@media (min-width: 1024px) {
+    .profile__job {
+        font-size: 18px;
+        line-height: 22px;
+        text-align: left;
+    }
+}
