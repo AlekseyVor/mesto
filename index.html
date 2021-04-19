@@ -17,54 +17,53 @@
         <section class="profile page__container">
             <img src="./images/profile-img.png" alt="" class="profile__avatar">
             <div class="profile__info">
-                <p class="profile__name">Жак-Ив Кусто</p>
-                <button class="profile__edit-button"></button>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button type="button" class="profile__edit-button"></button>
                 <p class="profile__job">Исследователь океана</p>
             </div>
-            <button class="profile__add-button">
-            </button>
+            <button type="button" class="profile__add-button"></button>
         </section>
         <section class="places page__container">
             <div class="place">
                 <img src="./images/Fort Ross.jpg" alt="Форт Росс" class="place__image">
                 <div class="place__header">
                     <h2 class="place__title">Форт Росс</h2>
-                    <button class="place__like"></button>
+                    <button type="button" class="place__like"></button>
                 </div>
             </div>
             <div class="place">
                 <img src="./images/Komi.jpg" alt="Коми" class="place__image">
                 <div class="place__header">
                     <h2 class="place__title">Коми</h2>
-                    <button class="place__like"></button>
+                    <button type="button" class="place__like"></button>
                 </div>
             </div>
             <div class="place">
                 <img src="./images/Moscow.jpg" alt="Москва" class="place__image">
                 <div class="place__header">
                     <h2 class="place__title">Москва</h2>
-                    <button class="place__like"></button>
+                    <button type="button" class="place__like"></button>
                 </div>
             </div>
             <div class="place">
                 <img src="./images/Saint Peterburg.jpg" alt="Санкт-Петербург" class="place__image">
                 <div class="place__header">
                     <h2 class="place__title">Санкт-Петербург</h2>
-                    <button class="place__like"></button>
+                    <button type="button" class="place__like"></button>
                 </div>
             </div>
             <div class="place">
                 <img src="./images/Sochi.jpg" alt="Сочи" class="place__image">
                 <div class="place__header">
                     <h2 class="place__title">Сочи</h2>
-                    <button class="place__like"></button>
+                    <button type="button" class="place__like"></button>
                 </div>
             </div>
             <div class="place">
                 <img src="./images/lake turgoyak.jpg" alt="Озеро Тургояк" class="place__image">
                 <div class="place__header">
                     <h2 class="place__title">Озеро Тургояк</h2>
-                    <button class="place__like"></button>
+                    <button type="button" class="place__like"></button>
                 </div>
             </div>
         </section>
@@ -76,15 +75,13 @@
     </footer>
     <section class="popup">
 
-        <div class="popup__container page__container">
-            <button class="popup__close"></button>
-            <h2 class="popup__title">
-                Редактировать профиль
-            </h2>
-            <p class="popup__name">Жак-Ив Кусто</p>
-            <p class="popup__job">Исследователь океана</p>
-            <buttton class="popup__submit">Сохранить</buttton>
-        </div>
+        <form class="popup__container page__container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" class="popup__input-name" value="Жак-Ив Кусто">
+            <input type="text" class="popup__input-job" value="Исследователь океана">
+            <button type="submit" class="popup__submit">Сохранить</button>
+            <button type="button" class="popup__close"></button>
+        </form>
 
     </section>
     <script src="/scripts/index.js"></script>
