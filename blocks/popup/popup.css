@@ -6,9 +6,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 0 auto;
-    padding: 123px 19px;
     z-index: 1;
+    justify-content: center;
+    align-items: center;
 }
 
 .popup::after {
@@ -22,19 +22,6 @@
     z-index: -1;
     background-color: black;
 }
-
-@media (min-width: 1024px) {
-    .popup {
-        padding: 160px 338px;
-    }
-}
-
-@media (min-width: 1280px) {
-    .popup {
-        padding: 195px 425px;
-    }
-}
-
 
 
 

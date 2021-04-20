@@ -8,11 +8,12 @@
     background-repeat: no-repeat;
     background-position: center;
     outline: none;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .profile__edit-button:hover {
     opacity: 0.6;
-    transition: opacity 0.8s ease-in-out;
+    cursor: url(../../../images/Pointer.png), pointer;
 }
 
 @media (min-width: 1024px) {

@@ -1,30 +1,20 @@
 .header {
     padding: 28px 0 31px;
-    position: relative;
-    z-index: 1;
+    min-width: 320px;
+    border-bottom: 1px solid rgb(84, 84, 84, 0.7);
 }
 
-.header::after {
-    border-bottom: 1px solid #545454;
-    opacity: 0.7;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-}
 
 @media (min-width: 768px) {
-    .cover {
+    .header {
         margin-bottom: 88px;
+        min-width: 768px;
     }
 }
 
 @media (min-width: 1024px) {
     .header {
-        max-width: 880px;
+        min-width: 880px;
     }
 }
 

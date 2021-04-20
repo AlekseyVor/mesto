@@ -10,11 +10,11 @@
 </head>
 
 <body class="page">
-    <header class="header page__container">
+    <header class="header">
         <img src="./images/header-logo.svg" alt="Лого" class="header__logo">
     </header>
     <main>
-        <section class="profile page__container">
+        <section class="profile">
             <img src="./images/profile-img.png" alt="Аватар" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -23,7 +23,7 @@
             </div>
             <button type="button" class="profile__add-button"></button>
         </section>
-        <section class="places page__container">
+        <section class="places">
             <div class="place">
                 <img src="./images/Fort-Ross.jpg" alt="Форт Росс" class="place__image">
                 <div class="place__header">
@@ -68,20 +68,21 @@
             </div>
         </section>
     </main>
-    <footer class="footer page__container">
+    <footer class="footer">
         <p class="footer__copyright">
             &copy;2021 Mesto Russia
         </p>
     </footer>
     <section class="popup">
-
-        <form class="popup__container page__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" class="popup__input-name" value="Жак-Ив Кусто" placeholder="Имя">
-            <input type="text" class="popup__input-job" value="Исследователь океана" placeholder="Профессия">
-            <button type="submit" class="popup__submit">Сохранить</button>
-            <button type="button" class="popup__close"></button>
-        </form>
+        <div class="popup__container">
+            <form name="profile-editor">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input name="name" type="text" class="popup__input popup__input-name" value="Жак-Ив Кусто" placeholder="Имя">
+                <input name="job" type="text" class="popup__input popup__input-job" value="Исследователь океана" placeholder="Профессия">
+                <button type="submit" class="popup__submit">Сохранить</button>
+                <button type="button" class="popup__close"></button>
+            </form>
+        </div>
 
     </section>
     <script src="./scripts/index.js"></script>

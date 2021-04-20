@@ -9,17 +9,17 @@
     background-repeat: no-repeat;
     background-position: center;
     outline: none;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .profile__add-button:hover {
     opacity: 0.5;
-    transition: opacity 0.8s ease-in-out;
+    cursor: url(../../../images/Pointer.png), pointer;
 }
 
 @media (min-width: 1024px) {
     .profile__add-button {
-        position: absolute;
         width: 150px;
-        right: 0px;
+        margin-left: auto;
     }
 }

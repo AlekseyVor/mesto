@@ -8,13 +8,14 @@
     background-image: url(../../../images/like.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .place__like:hover {
     opacity: 0.5;
-    transition: opacity 0.8s ease-in-out;
+    cursor: url(../../../images/Pointer.png), pointer;
 }
 
-place__like:active {
+.place__like:active {
     background-image: url(../../../images/like-active.svg);
 }
