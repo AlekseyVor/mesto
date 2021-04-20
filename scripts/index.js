@@ -4,8 +4,8 @@ const popupButtonClose = document.querySelector ('.popup__close');
 const popupForm = document.querySelector ('.popup__container');
 let nameProfile = document.querySelector ('.profile__name');
 let jobProfile = document.querySelector ('.profile__job');
-let nameInput = document.querySelector ('.popup__input-name');
-let jobInput =  document.querySelector ('.popup__input-job');
+let nameInput = document.querySelector ('.popup__input_name');
+let jobInput =  document.querySelector ('.popup__input_job');
 
 function formSubmitHandler (event) {
     event.preventDefault(); 
