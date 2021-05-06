@@ -24,48 +24,6 @@
             <button type="button" class="profile__add-button"></button>
         </section>
         <section class="places">
-            <div class="place">
-                <img src="./images/Fort-Ross.jpg" alt="Форт Росс" class="place__image">
-                <div class="place__header">
-                    <h2 class="place__title">Форт Росс</h2>
-                    <button type="button" class="place__like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img src="./images/Komi.jpg" alt="Коми" class="place__image">
-                <div class="place__header">
-                    <h2 class="place__title">Коми</h2>
-                    <button type="button" class="place__like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img src="./images/Moscow.jpg" alt="Москва" class="place__image">
-                <div class="place__header">
-                    <h2 class="place__title">Москва</h2>
-                    <button type="button" class="place__like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img src="./images/Saint-Peterburg.jpg" alt="Санкт-Петербург" class="place__image">
-                <div class="place__header">
-                    <h2 class="place__title">Санкт-Петербург</h2>
-                    <button type="button" class="place__like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img src="./images/Sochi.jpg" alt="Сочи" class="place__image">
-                <div class="place__header">
-                    <h2 class="place__title">Сочи</h2>
-                    <button type="button" class="place__like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img src="./images/lake-turgoyak.jpg" alt="Озеро Тургояк" class="place__image">
-                <div class="place__header">
-                    <h2 class="place__title">Озеро Тургояк</h2>
-                    <button type="button" class="place__like"></button>
-                </div>
-            </div>
         </section>
     </main>
     <footer class="footer">
@@ -74,6 +32,7 @@
         </p>
     </footer>
     <section class="popup">
+        <div class="popup__overlay" id="profile">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="profile-editor">
@@ -85,8 +44,30 @@
             </form>
             <button type="button" class="popup__close"></button>
         </div>
+    </div>
+    <div class="popup__overlay" id="newplace">
+        <div class="popup__container">
+            <h2 class="popup__title">Новое место</h2>
+            <form name="place-editor">
+                <input name="place-name" type="text" class="popup__input popup__input_place" placeholder="Название">
+                <input name="url" type="url" class="popup__input popup__input_url" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__submit">Создать</button>
+            </form>
+            <button type="button" class="popup__close"></button>
+        </div>
+    </div>
+
 
     </section>
+    <template id="cards">
+        <div class="place">
+            <img src="./images/lake-turgoyak.jpg" alt="Озеро Тургояк" class="place__image">
+            <div class="place__header">
+                <h2 class="place__title">Озеро Тургояк</h2>
+                <button type="button" class="place__like"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 

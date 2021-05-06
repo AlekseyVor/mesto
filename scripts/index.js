@@ -1,34 +1,89 @@
-const popup = document.querySelector ('.popup');
-const popupButtonOpen = document.querySelector ('.profile__edit-button');
-const popupButtonClose = document.querySelector ('.popup__close');
+const popupProfile = document.querySelector ('#profile');
+const popupPlace = document.querySelector ('#newplace');
+const popupButtonProfile = document.querySelector ('.profile__edit-button');
+const popupButtonPlace = document.querySelector ('.profile__add-button');
+const popupButtonClose = document.querySelectorAll ('.popup__close');
 const popupForm = document.querySelector ('.popup__container');
+const cardTemplate = document.querySelector ('#cards');
+const cardsContainer = document.querySelector ('.places');
 let nameProfile = document.querySelector ('.profile__name');
 let jobProfile = document.querySelector ('.profile__job');
 let nameInput = document.querySelector ('.popup__input_name');
 let jobInput =  document.querySelector ('.popup__input_job');
+let placeInput = document.querySelector ('.popup__input_place');
+let urlInput = document.querySelector ('.popup__input_url');
 
-function formSubmitHandler (event) {
+
+const initialCards = [
+    {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
+
+function cardCreate (item) {
+    const cardElement = cardTemplate.content.querySelector('.place').cloneNode(true);
+    cardElement.querySelector('.place__title').textContent = item.name;
+    cardElement.querySelector('.place__image').src = item.link;
+    cardElement.querySelector('.place__image').alt = item.name;
+    cardsContainer.prepend(cardElement)}
+
+initialCards.forEach (cardCreate);
+
+function formSubmitProfile (event) {
     event.preventDefault(); 
-    nameProfile.textContent = (nameInput.value); 
-    jobProfile.textContent = (jobInput.value);
-    OpenClosePopup();
+    nameProfile.textContent = nameInput.value; 
+    jobProfile.textContent = jobInput.value;
+    ClosePopup();
+}
+function formSubmitPlace (event) {
+    event.preventDefault();
+    const item = [{name: placeInput.value,link: urlInput.value}];
+    item.forEach(cardCreate);
+    ClosePopup();
+    placeInput.value = '';
+    urlInput.value = '';
 }
 
-function OpenClosePopup () {
-    popup.classList.toggle ('popup_opened');
+function OpenPopup (event) {
+    if (event.target === popupButtonProfile) {
+        popupProfile.classList.add ('popup_opened');
+    }
+    if (event.target === popupButtonPlace) {
+        popupPlace.classList.add ('popup_opened');
+    }
 }
 
-function overlayClosePopup (event) {
-if (event.target === event.currentTarget) {
-    OpenClosePopup();
-}
-}
+function ClosePopup(event) {
+    popupPlace.classList.remove ('popup_opened');
+    popupProfile.classList.remove ('popup_opened');}
 
-popupButtonOpen.addEventListener ('click', OpenClosePopup);
-popupButtonClose.addEventListener ('click', OpenClosePopup);
-popup.addEventListener ('click', overlayClosePopup);
-popupForm.addEventListener('submit', formSubmitHandler);
+popupButtonClose.forEach(function (button) {
+button.addEventListener ('click', ClosePopup);
+});
 
 
-
-
+popupButtonProfile.addEventListener ('click', OpenPopup);
+popupButtonPlace.addEventListener ('click', OpenPopup);
+popupProfile.addEventListener ('submit', formSubmitProfile);
+popupPlace.addEventListener ('submit', formSubmitPlace);
