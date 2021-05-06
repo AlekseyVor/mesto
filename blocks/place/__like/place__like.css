@@ -16,6 +16,3 @@
     cursor: url(../../../images/Pointer.png), pointer;
 }
 
-.place__like:active {
-    background-image: url(../../../images/like-active.svg);
-}

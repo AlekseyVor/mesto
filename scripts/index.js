@@ -43,6 +43,10 @@ const initialCards = [
 
 function cardCreate (item) {
     const cardElement = cardTemplate.content.querySelector('.place').cloneNode(true);
+    cardElement.querySelector('.place__like').addEventListener('click', function (evt) {
+        console.log(evt.target);
+        evt.target.classList.toggle('place__like_active')
+    });
     cardElement.querySelector('.place__title').textContent = item.name;
     cardElement.querySelector('.place__image').src = item.link;
     cardElement.querySelector('.place__image').alt = item.name;
@@ -81,6 +85,15 @@ function ClosePopup(event) {
 popupButtonClose.forEach(function (button) {
 button.addEventListener ('click', ClosePopup);
 });
+
+// function addSong() {
+//     
+// }
+function kek (){
+const cardElement = cardTemplate.content.querySelector('.place').cloneNode(true);
+}
+    
+
 
 
 popupButtonProfile.addEventListener ('click', OpenPopup);
