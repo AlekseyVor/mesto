@@ -3,3 +3,8 @@
     height: 282px;
     object-fit: cover;
 }
+
+
+.place__image:hover {
+    cursor: url(../../../images/Pointer.png), pointer;
+}

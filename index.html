@@ -33,37 +33,45 @@
     </footer>
     <section class="popup">
         <div class="popup__overlay" id="profile">
-        <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="profile-editor">
-                <input name="name" type="text" class="popup__input popup__input_name" value="Жак-Ив Кусто"
-                    placeholder="Имя">
-                <input name="job" type="text" class="popup__input popup__input_job" value="Исследователь океана"
-                    placeholder="Профессия">
-                <button type="submit" class="popup__submit">Сохранить</button>
-            </form>
-            <button type="button" class="popup__close"></button>
+            <div class="popup__container popup__container_theme_white">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form name="profile-editor">
+                    <input name="name" type="text" class="popup__input popup__input_name" value="Жак-Ив Кусто"
+                        placeholder="Имя">
+                    <input name="job" type="text" class="popup__input popup__input_job" value="Исследователь океана"
+                        placeholder="Профессия">
+                    <button type="submit" class="popup__submit">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close"></button>
+            </div>
         </div>
-    </div>
-    <div class="popup__overlay" id="newplace">
-        <div class="popup__container">
-            <h2 class="popup__title">Новое место</h2>
-            <form name="place-editor">
-                <input name="place-name" type="text" class="popup__input popup__input_place" placeholder="Название">
-                <input name="url" type="url" class="popup__input popup__input_url" placeholder="Ссылка на картинку">
-                <button type="submit" class="popup__submit">Создать</button>
-            </form>
-            <button type="button" class="popup__close"></button>
+        <div class="popup__overlay" id="newplace">
+            <div class="popup__container popup__container_theme_white">
+                <h2 class="popup__title">Новое место</h2>
+                <form name="place-editor">
+                    <input name="place-name" type="text" class="popup__input popup__input_place" placeholder="Название">
+                    <input name="url" type="url" class="popup__input popup__input_url" placeholder="Ссылка на картинку">
+                    <button type="submit" class="popup__submit">Создать</button>
+                </form>
+                <button type="button" class="popup__close"></button>
+            </div>
         </div>
-    </div>
+        <div class="popup__overlay popup__overlay_photo" id="photo">
+            <div class="popup__container popup__container_theme_transparent">
+                <img class="popup__img" alt=""
+                    src="">
+                <h2 class="popup__title-img"></h2>
+                <button type="button" class="popup__close"></button>
+            </div>
+        </div>
 
 
     </section>
     <template id="cards">
         <div class="place">
-            <img src="./images/lake-turgoyak.jpg" alt="Озеро Тургояк" class="place__image">
+            <img src="" alt="" class="place__image">
             <div class="place__header">
-                <h2 class="place__title">Озеро Тургояк</h2>
+                <h2 class="place__title"></h2>
                 <button type="button" class="place__like"></button>
             </div>
             <button type="button" class="place__delete"></button>
