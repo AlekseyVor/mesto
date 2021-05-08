@@ -4,17 +4,17 @@ const popupPhoto = document.querySelector ('#photo');
 const popupButtonProfile = document.querySelector ('.profile__edit-button');
 const popupButtonPlace = document.querySelector ('.profile__add-button');
 const popupButtonPhoto = document.querySelector ('.place__image');
-const popupForms = document.querySelector ('.popup');
+const popupButtonClose = document.querySelectorAll ('.popup__close')
 const cardTemplate = document.querySelector ('#cards');
 const cardsContainer = document.querySelector ('.places');
 const nameProfile = document.querySelector ('.profile__name');
 const jobProfile = document.querySelector ('.profile__job');
 const photoImg = document.querySelector ('.popup__img');
 const photoTitle = document.querySelector ('.popup__title-img');
-let nameInput = document.querySelector ('.popup__input_name');
-let jobInput =  document.querySelector ('.popup__input_job');
-let placeInput = document.querySelector ('.popup__input_place');
-let urlInput = document.querySelector ('.popup__input_url');
+const nameInput = document.querySelector ('.popup__input_name');
+const jobInput =  document.querySelector ('.popup__input_job');
+const placeInput = document.querySelector ('.popup__input_place');
+const urlInput = document.querySelector ('.popup__input_url');
 
 const initialCards = [
     {
@@ -45,17 +45,23 @@ const initialCards = [
 
 function createCard (item, link) {
     const cardElement = cardTemplate.content.querySelector('.place').cloneNode(true);
-    cardElement.querySelector('.place__title').textContent = item;
-    cardElement.querySelector('.place__image').src = link;
-    cardElement.querySelector('.place__image').alt = item;
+    const placeTitle = cardElement.querySelector('.place__title');
+    const placeImage = cardElement.querySelector('.place__image');
+    placeTitle.textContent = item;
+    placeImage.src = link;
+    placeImage.alt = item;
+
     cardElement.querySelector('.place__like').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('place__like_active')
+        evt.target.classList.toggle('place__like_active');
         });
     cardElement.querySelector('.place__delete').addEventListener('click', function (evt) {
-        evt.target.closest('.place').remove()
+        evt.target.closest('.place').remove();
+        });
+    cardElement.querySelector('.place__image').addEventListener('click', function (evt) {
+        popupFotoPaste(evt);
+        openPopup(popupPhoto);
         });
     return cardElement;
-    
 };
 
 function addCard (container, cardElement) {
@@ -85,13 +91,19 @@ function closePopup(popup) {
     popup.classList.remove ('popup_opened');
 }
 
-
 function popupFotoPaste (evt) {
     const foto = evt.target;
     photoImg.src = foto.src;
     photoImg.alt = foto.alt;
     photoTitle.textContent = foto.alt;
 }
+
+popupButtonClose.forEach(function (button) { 
+    button.addEventListener ('click', function close (evt) {
+        const closeButton = evt.target;
+        closePopup(closeButton.closest('.popup__overlay'));
+    }); 
+    }); 
 
 popupButtonProfile.addEventListener ('click', function () {
     openPopup(popupProfile);
@@ -100,27 +112,6 @@ popupButtonProfile.addEventListener ('click', function () {
 popupButtonPlace.addEventListener ('click', function () {
     openPopup(popupPlace);
 });
-
-cardsContainer.addEventListener ('click', function (evt) {
-    const popupButtonPhoto = document.querySelector ('.place__image');
-    if (evt.target.classList.value === popupButtonPhoto.classList.value) {
-        popupFotoPaste(evt);
-        openPopup(popupPhoto);
-    }
-});
-
-popupForms.addEventListener ('click', function(evt){
-    const popupButtonClose = evt.target.parentElement.parentElement;
-    if (popupButtonClose === popupProfile) {
-        closePopup(popupProfile);
-    };
-    if (popupButtonClose === popupPlace) {
-        closePopup(popupPlace);
-    };
-    if (popupButtonClose === popupPhoto) {
-        closePopup(popupPhoto);
-    };
-})
 
 popupProfile.addEventListener ('submit', formSubmitProfile);
 popupPlace.addEventListener ('submit', formSubmitPlace);
