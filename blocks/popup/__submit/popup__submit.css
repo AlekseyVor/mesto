@@ -19,6 +19,11 @@
     cursor: url(../../../images/Pointer.png), pointer;
 }
 
+.popup__submit:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
 @media (min-width: 1024px) {
     .popup__submit {
         font-size: 18px;

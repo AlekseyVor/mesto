@@ -15,6 +15,7 @@ const nameInput = document.querySelector ('.popup__input_name');
 const jobInput =  document.querySelector ('.popup__input_job');
 const placeInput = document.querySelector ('.popup__input_place');
 const urlInput = document.querySelector ('.popup__input_url');
+const popupOverlay = document.querySelectorAll ('.popup__overlay');
 
 const initialCards = [
     {
@@ -84,12 +85,16 @@ function formSubmitPlace (evt) {
     closePopup(popupPlace);
 }
 
-function openPopup (popup) {
+function openPopup (popup) { 
     popup.classList.add ('popup_opened');
+    document.addEventListener ('keydown', escapeEventListener);
 }
+
 function closePopup(popup) {
     popup.classList.remove ('popup_opened');
+    document.removeEventListener ('keydown', escapeEventListener);
 }
+
 
 function popupFotoPaste (evt) {
     const foto = evt.target;
@@ -98,20 +103,50 @@ function popupFotoPaste (evt) {
     photoTitle.textContent = foto.alt;
 }
 
+function inputValue () {
+    placeInput.dispatchEvent(new Event('input'));
+    urlInput.dispatchEvent(new Event('input'));
+}
+
+function escapeEventListener (evt) {
+    const openedPopup = document.querySelector ('.popup_opened');
+    if(evt.key === 'Escape') {
+        closePopup(openedPopup);
+    }
+}
+
 popupButtonClose.forEach(function (button) { 
     button.addEventListener ('click', function close (evt) {
         const closeButton = evt.target;
         closePopup(closeButton.closest('.popup__overlay'));
     }); 
-    }); 
+    });
+
+popupOverlay.forEach(function (overlay) {
+    overlay.addEventListener ('mousedown', function close (evt) {
+        if(evt.target === overlay) {
+            closePopup(overlay);
+        }
+    })
+});
 
 popupButtonProfile.addEventListener ('click', function () {
     openPopup(popupProfile);
 });
 
 popupButtonPlace.addEventListener ('click', function () {
+    inputValue();
     openPopup(popupPlace);
 });
 
 popupProfile.addEventListener ('submit', formSubmitProfile);
 popupPlace.addEventListener ('submit', formSubmitPlace);
+
+const config = {
+    errorActiveClass: 'popup__input-error_active',
+    inputSelector: '.popup__input',
+    submitSelector: '.popup__submit',
+    formSelector: '.form'
+}
+
+enableValidation(config);
