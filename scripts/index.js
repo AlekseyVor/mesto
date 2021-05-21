@@ -4,7 +4,7 @@ const popupPhoto = document.querySelector ('#photo');
 const popupButtonProfile = document.querySelector ('.profile__edit-button');
 const popupButtonPlace = document.querySelector ('.profile__add-button');
 const popupButtonPhoto = document.querySelector ('.place__image');
-const popupButtonClose = document.querySelectorAll ('.popup__close')
+const popupCloseButtons = document.querySelectorAll ('.popup__close')
 const cardTemplate = document.querySelector ('#cards');
 const cardsContainer = document.querySelector ('.places');
 const nameProfile = document.querySelector ('.profile__name');
@@ -15,7 +15,7 @@ const nameInput = document.querySelector ('.popup__input_name');
 const jobInput =  document.querySelector ('.popup__input_job');
 const placeInput = document.querySelector ('.popup__input_place');
 const urlInput = document.querySelector ('.popup__input_url');
-const popupOverlay = document.querySelectorAll ('.popup__overlay');
+const popupOverlays = document.querySelectorAll ('.popup__overlay');
 
 const initialCards = [
     {
@@ -59,7 +59,7 @@ function createCard (item, link) {
         evt.target.closest('.place').remove();
         });
     cardElement.querySelector('.place__image').addEventListener('click', function (evt) {
-        popupFotoPaste(evt);
+        pastePopupFoto(evt);
         openPopup(popupPhoto);
         });
     return cardElement;
@@ -72,57 +72,64 @@ initialCards.forEach(function (item) {
     addCard(cardsContainer,createCard(item.name,item.link));
 });
 
-function formSubmitProfile (evt) {
+function submitProfileForm (evt) {
     evt.preventDefault(); 
     nameProfile.textContent = nameInput.value; 
     jobProfile.textContent = jobInput.value;
     closePopup(popupProfile);
 }
-function formSubmitPlace (evt) {
+function submitPlaceForm (evt) {
     evt.preventDefault();
     addCard(cardsContainer,createCard(placeInput.value,urlInput.value));
-    evt.target.reset();
     closePopup(popupPlace);
+    evt.target.reset();
 }
 
 function openPopup (popup) { 
     popup.classList.add ('popup_opened');
-    document.addEventListener ('keydown', escapeEventListener);
+    document.addEventListener ('keydown', setEscapeEventListener);
 }
 
 function closePopup(popup) {
     popup.classList.remove ('popup_opened');
-    document.removeEventListener ('keydown', escapeEventListener);
+    document.removeEventListener ('keydown', setEscapeEventListener);
 }
 
 
-function popupFotoPaste (evt) {
+function pastePopupFoto (evt) {
     const foto = evt.target;
     photoImg.src = foto.src;
     photoImg.alt = foto.alt;
     photoTitle.textContent = foto.alt;
 }
 
-function inputValue () {
+function inputPlaceValue () {
     placeInput.dispatchEvent(new Event('input'));
     urlInput.dispatchEvent(new Event('input'));
 }
 
-function escapeEventListener (evt) {
+function setEscapeEventListener (evt) {
     const openedPopup = document.querySelector ('.popup_opened');
     if(evt.key === 'Escape') {
         closePopup(openedPopup);
     }
 }
 
-popupButtonClose.forEach(function (button) { 
+function inputProfileValue () {
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = jobProfile.textContent;
+    nameInput.dispatchEvent(new Event('input'));
+}
+
+
+popupCloseButtons.forEach(function (button) { 
     button.addEventListener ('click', function close (evt) {
         const closeButton = evt.target;
         closePopup(closeButton.closest('.popup__overlay'));
     }); 
     });
 
-popupOverlay.forEach(function (overlay) {
+popupOverlays.forEach(function (overlay) {
     overlay.addEventListener ('mousedown', function close (evt) {
         if(evt.target === overlay) {
             closePopup(overlay);
@@ -131,16 +138,17 @@ popupOverlay.forEach(function (overlay) {
 });
 
 popupButtonProfile.addEventListener ('click', function () {
+    inputProfileValue();
     openPopup(popupProfile);
 });
 
 popupButtonPlace.addEventListener ('click', function () {
-    inputValue();
+    inputPlaceValue();
     openPopup(popupPlace);
 });
 
-popupProfile.addEventListener ('submit', formSubmitProfile);
-popupPlace.addEventListener ('submit', formSubmitPlace);
+popupProfile.addEventListener ('submit', submitProfileForm);
+popupPlace.addEventListener ('submit', submitPlaceForm);
 
 const config = {
     errorActiveClass: 'popup__input-error_active',
