@@ -17,78 +17,81 @@ const placeInput = document.querySelector ('.popup__input_place');
 const urlInput = document.querySelector ('.popup__input_url');
 const popupOverlays = document.querySelectorAll ('.popup__overlay');
 
-function createCard (item, link) {
+const createCard = (item, link) => {
     const cardElement = cardTemplate.content.querySelector('.place').cloneNode(true);
     const placeTitle = cardElement.querySelector('.place__title');
     const placeImage = cardElement.querySelector('.place__image');
     placeTitle.textContent = item;
     placeImage.src = link;
     placeImage.alt = item;
+    setCardEventListeners(cardElement, item, link);
+    return cardElement;
+}
 
-    cardElement.querySelector('.place__like').addEventListener('click', function (evt) {
+const setCardEventListeners = (cardElement, item, link) => {
+    cardElement.querySelector('.place__like').addEventListener('click', (evt) => {
         evt.target.classList.toggle('place__like_active');
         });
-    cardElement.querySelector('.place__delete').addEventListener('click', function (evt) {
+    cardElement.querySelector('.place__delete').addEventListener('click', (evt) => {
         evt.target.closest('.place').remove();
         });
-    cardElement.querySelector('.place__image').addEventListener('click', function (evt) {
-        pastePopupFoto(evt);
+    cardElement.querySelector('.place__image').addEventListener('click', () => {
+        pastePopupFoto(item, link);
         openPopup(popupPhoto);
         });
-    return cardElement;
-};
+}
 
-function addCard (container, cardElement) {
+const addCard = (container, cardElement) => {
     container.prepend(cardElement);
 }
-initialCards.forEach(function (item) {
+initialCards.forEach((item) => {
     addCard(cardsContainer,createCard(item.name,item.link));
 });
 
-function submitProfileForm (evt) {
+const submitProfileForm = (evt) => {
     evt.preventDefault(); 
     nameProfile.textContent = nameInput.value; 
     jobProfile.textContent = jobInput.value;
     closePopup(popupProfile);
 }
-function submitPlaceForm (evt) {
+
+const submitPlaceForm = (evt) => {
     evt.preventDefault();
     addCard(cardsContainer,createCard(placeInput.value,urlInput.value));
     closePopup(popupPlace);
     evt.target.reset();
 }
 
-function openPopup (popup) { 
+const openPopup = (popup) => { 
     popup.classList.add ('popup_opened');
     document.addEventListener ('keydown', setEscapeEventListener);
 }
 
-function closePopup(popup) {
+const closePopup = (popup) => {
     popup.classList.remove ('popup_opened');
     document.removeEventListener ('keydown', setEscapeEventListener);
 }
 
 
-function pastePopupFoto (evt) {
-    const foto = evt.target;
-    photoImg.src = foto.src;
-    photoImg.alt = foto.alt;
-    photoTitle.textContent = foto.alt;
+const pastePopupFoto = (item, link) => {
+    photoImg.src = link;
+    photoImg.alt = item;
+    photoTitle.textContent = item;
 }
 
-function inputPlaceValue () {
+const inputPlaceValue = () => {
     placeInput.dispatchEvent(new Event('input'));
     urlInput.dispatchEvent(new Event('input'));
 }
 
-function setEscapeEventListener (evt) {
+const setEscapeEventListener = (evt) => {
     const openedPopup = document.querySelector ('.popup_opened');
     if(evt.key === 'Escape') {
         closePopup(openedPopup);
     }
 }
 
-function inputProfileValue () {
+const inputProfileValue = () => {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
     nameInput.dispatchEvent(new Event('input'));
@@ -96,26 +99,26 @@ function inputProfileValue () {
 
 
 popupCloseButtons.forEach(function (button) { 
-    button.addEventListener ('click', function close (evt) {
+    button.addEventListener ('click', (evt) => {
         const closeButton = evt.target;
         closePopup(closeButton.closest('.popup__overlay'));
     }); 
     });
 
 popupOverlays.forEach(function (overlay) {
-    overlay.addEventListener ('mousedown', function close (evt) {
+    overlay.addEventListener ('mousedown',(evt) => {
         if(evt.target === overlay) {
             closePopup(overlay);
         }
     })
 });
 
-popupButtonProfile.addEventListener ('click', function () {
+popupButtonProfile.addEventListener ('click',() => {
     inputProfileValue();
     openPopup(popupProfile);
 });
 
-popupButtonPlace.addEventListener ('click', function () {
+popupButtonPlace.addEventListener ('click',() => {
     inputPlaceValue();
     openPopup(popupPlace);
 });

@@ -34,7 +34,7 @@ const toggleButtonState = (buttonElement, inputList) => {
     }
 }
 
-const setEventListeners = (formElement, config) => {
+const setValidationEventListeners = (formElement, config) => {
     const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
     const buttonElement = formElement.querySelector(config.submitSelector);
     inputList.forEach((inputElement) => {
@@ -52,6 +52,6 @@ const enableValidation = (config) =>  {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     // event listeners 
     formList.forEach((formElement) => {
-        setEventListeners(formElement, config);
+        setValidationEventListeners(formElement, config);
     })
 }
