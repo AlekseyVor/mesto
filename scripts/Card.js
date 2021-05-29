@@ -1,6 +1,7 @@
-import {openPopup,photoImg,photoTitle,popupPhoto} from './index.js'
+import {photoImg,photoTitle,popupPhoto} from '../utils/constants.js';
+import {openPopup} from '../utils/utils.js';
 
-class Card {
+export default class Card {
     constructor(title, image, cardSelector){
     this._title = title;
     this._image = image;
@@ -50,5 +51,3 @@ class Card {
     }
     
 }
-
-export default Card;

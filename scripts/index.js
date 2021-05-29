@@ -1,23 +1,7 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import {config, initialCards} from '../utils/constants.js'
-
-const popupProfile = document.querySelector ('#profile');
-const popupPlace = document.querySelector ('#newplace');
-const popupPhoto = document.querySelector ('#photo');
-const popupButtonProfile = document.querySelector ('.profile__edit-button');
-const popupButtonPlace = document.querySelector ('.profile__add-button');
-const popupCloseButtons = document.querySelectorAll ('.popup__close')
-const cardsContainer = document.querySelector ('.places');
-const nameProfile = document.querySelector ('.profile__name');
-const jobProfile = document.querySelector ('.profile__job');
-const photoImg = document.querySelector ('.popup__img');
-const photoTitle = document.querySelector ('.popup__title-img');
-const nameInput = document.querySelector ('.popup__input_name');
-const jobInput =  document.querySelector ('.popup__input_job');
-const placeInput = document.querySelector ('.popup__input_place');
-const urlInput = document.querySelector ('.popup__input_url');
-const popupOverlays = document.querySelectorAll ('.popup__overlay');
+import {popupProfile,popupPlace,popupButtonProfile,popupButtonPlace,popupCloseButtons,cardsContainer,nameProfile,jobProfile,nameInput,jobInput,placeInput,urlInput,popupOverlays,config,initialCards} from '../utils/constants.js'
+import {openPopup} from '../utils/utils.js';
 
 const addCard = (container, cardElement) => {
     container.prepend(cardElement);
@@ -43,17 +27,12 @@ const submitPlaceForm = (evt) => {
     evt.target.reset();
 }
 
-const openPopup = (popup) => { 
-    popup.classList.add ('popup_opened');
-    document.addEventListener ('keydown', setEscapeEventListener);
-}
-
 const closePopup = (popup) => {
     popup.classList.remove ('popup_opened');
     document.removeEventListener ('keydown', setEscapeEventListener);
 }
 
-const setEscapeEventListener = (evt) => {
+export const setEscapeEventListener = (evt) => {
     const openedPopup = document.querySelector ('.popup_opened');
     if(evt.key === 'Escape') {
         closePopup(openedPopup);
@@ -98,5 +77,3 @@ const formProfile = new FormValidator(config,'.profile-editor');
 const formPlace = new FormValidator(config,'.place-editor');
 formProfile.enableValidation();
 formPlace.enableValidation();
-
-export {openPopup,photoImg,photoTitle,popupPhoto};
