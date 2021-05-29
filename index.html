@@ -35,7 +35,7 @@
         <div class="popup__overlay" id="profile">
             <div class="popup__container popup__container_theme_white">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="form" name="profile-editor" novalidate> 
+                <form class="form profile-editor" name="profile-editor" novalidate> 
                     <input name="name" type="text" minlength="2" maxlength="40" class="popup__input popup__input_name" 
                         placeholder="Имя" id="name" required>
                     <span class="popup__input-error" id="name-error"></span>
@@ -50,7 +50,7 @@
         <div class="popup__overlay" id="newplace">
             <div class="popup__container popup__container_theme_white">
                 <h2 class="popup__title">Новое место</h2>
-                <form class="form" name="place-editor" novalidate>
+                <form class="form place-editor" name="place-editor" novalidate>
                     <input name="place-name" type="text" minlength="2" maxlength="30" class="popup__input popup__input_place" placeholder="Название" id="place" required>
                     <span class="popup__input-error" id="place-error">kek</span>
                     <input name="url" type="url" class="popup__input popup__input_url" placeholder="Ссылка на картинку" id="url" required>
@@ -71,7 +71,7 @@
 
 
     </section>
-    <template id="cards">
+    <template class="card-template_type_default" id="cards">
         <div class="place">
             <img src="template" alt="template" class="place__image">
             <div class="place__header">
@@ -81,9 +81,7 @@
             <button type="button" class="place__delete"></button>
         </div>
     </template>
-    <script src="./scripts/validation.js"></script>
-    <script src="./scripts/initial-cards.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
