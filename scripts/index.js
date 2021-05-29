@@ -67,10 +67,11 @@ const setEscapeEventListener = (evt) => {
 }
 
 const inputProfileValue = () => {
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
     nameInput.dispatchEvent(new Event('input'));
     jobInput.dispatchEvent(new Event('input'));
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = jobProfile.textContent;
+    
 }
 
 
