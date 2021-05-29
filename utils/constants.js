@@ -1,5 +1,6 @@
 const config = {
     errorActiveClass: 'popup__input-error_active',
+    errorInputClass: 'popup__input_invalid',
     inputSelector: '.popup__input',
     submitSelector: '.popup__submit',
 }

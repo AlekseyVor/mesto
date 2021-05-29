@@ -17,15 +17,6 @@
     margin: 0 22px 45px;
 }
 
-.popup__input:invalid {
-    border-bottom: 1px solid #FF0000;
-    margin: 0 22px 5px;
-}
-.popup__input:invalid:last-of-type {
-    margin: 0 22px 5px;
-}
-
-
 @media (min-width: 1024px) {
     .popup__input{
         font-size: 14px;
@@ -33,14 +24,9 @@
         margin: 0 36px 30px;
         min-width: 358px;
     }
-    .popup__input:invalid {
-        margin: 0 36px 5px;
-    }
 
     .popup__input:last-of-type {
         margin: 0 36px 48px;
     }
-    .popup__input:last-of-type:invalid {
-        margin: 0 36px 5px;
-    }
+
 }

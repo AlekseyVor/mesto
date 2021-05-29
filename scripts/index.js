@@ -2,7 +2,6 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import {config, initialCards} from '../utils/constants.js'
 
-
 const popupProfile = document.querySelector ('#profile');
 const popupPlace = document.querySelector ('#newplace');
 const popupPhoto = document.querySelector ('#photo');
@@ -54,11 +53,6 @@ const closePopup = (popup) => {
     document.removeEventListener ('keydown', setEscapeEventListener);
 }
 
-const inputPlaceValue = () => {
-    placeInput.dispatchEvent(new Event('input'));
-    urlInput.dispatchEvent(new Event('input'));
-}
-
 const setEscapeEventListener = (evt) => {
     const openedPopup = document.querySelector ('.popup_opened');
     if(evt.key === 'Escape') {
@@ -67,14 +61,9 @@ const setEscapeEventListener = (evt) => {
 }
 
 const inputProfileValue = () => {
-    
     nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
-    nameInput.dispatchEvent(new Event('input'));
-    jobInput.dispatchEvent(new Event('input'));
-    
+    jobInput.value = jobProfile.textContent; 
 }
-
 
 popupCloseButtons.forEach(function (button) { 
     button.addEventListener ('click', (evt) => {
@@ -93,11 +82,12 @@ popupOverlays.forEach(function (overlay) {
 
 popupButtonProfile.addEventListener ('click',() => {
     inputProfileValue();
+    formProfile.toggleButtonState(formProfile._formElement.querySelector(config.submitSelector), Array.from(formProfile._formElement.querySelectorAll(config.inputSelector)));
     openPopup(popupProfile);
 });
 
 popupButtonPlace.addEventListener ('click',() => {
-    inputPlaceValue();
+    formPlace.toggleButtonState(formPlace._formElement.querySelector(config.submitSelector), Array.from(formPlace._formElement.querySelectorAll(config.inputSelector)));
     openPopup(popupPlace);
 });
 
