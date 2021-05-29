@@ -1,8 +1,11 @@
+import {openPopup,photoImg,photoTitle,popupPhoto} from './index.js'
+
 class Card {
     constructor(title, image, cardSelector){
     this._title = title;
     this._image = image;
     this._cardSelector = cardSelector;
+    
     }
 
     _getTemplate() {

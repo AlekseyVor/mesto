@@ -67,10 +67,11 @@ const setEscapeEventListener = (evt) => {
 }
 
 const inputProfileValue = () => {
-    nameInput.dispatchEvent(new Event('input'));
-    jobInput.dispatchEvent(new Event('input'));
+    
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
+    nameInput.dispatchEvent(new Event('input'));
+    jobInput.dispatchEvent(new Event('input'));
     
 }
 
@@ -107,3 +108,5 @@ const formProfile = new FormValidator(config,'.profile-editor');
 const formPlace = new FormValidator(config,'.place-editor');
 formProfile.enableValidation();
 formPlace.enableValidation();
+
+export {openPopup,photoImg,photoTitle,popupPhoto};

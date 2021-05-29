@@ -15,7 +15,7 @@ class FormValidator {
         erorrElement.textContent = inputElement.validationMessage;
         erorrElement.classList.add(this._config.errorActiveClass);
     }
-    _checkInputValidity = (inputElement) => {
+    checkInputValidity = (inputElement) => {
         if(inputElement.validity.valid) {
             this._hideInputError(inputElement);
         } else { 
@@ -41,7 +41,7 @@ class FormValidator {
 
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input',() => {
-                this._checkInputValidity(inputElement);
+                this.checkInputValidity(inputElement);
                 this._toggleButtonState(buttonElement, inputList);
             })
             
