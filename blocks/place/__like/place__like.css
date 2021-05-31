@@ -13,6 +13,7 @@
 
 .place__like:hover {
     opacity: 0.5;
-    cursor: url(../../../images/Pointer.png), pointer;
+    cursor: pointer;
 }
+
 

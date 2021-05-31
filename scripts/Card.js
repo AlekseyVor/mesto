@@ -15,8 +15,7 @@ export default class Card {
         .content
         .querySelector ('.place')
         .cloneNode(true);
-
-        this._element = cardElement;
+        return cardElement;
     }
 
     _pastePopupPhoto() {
@@ -29,8 +28,8 @@ export default class Card {
         this._element.querySelector('.place__like').addEventListener('click', (evt) => {
         evt.target.classList.toggle('place__like_active');
         });
-        this._element.querySelector('.place__delete').addEventListener('click', (evt) => {
-        evt.target.closest('.place').remove();
+        this._element.querySelector('.place__delete').addEventListener('click', () => {
+        this._element.remove();
         });
         this._element.querySelector('.place__image').addEventListener('click', () => {
         this._pastePopupPhoto();
@@ -40,7 +39,9 @@ export default class Card {
 
 
     generateCard() {
+        this._element = this._getTemplate();
         this._getTemplate();
+        
         this._setEventListeners();
 
         this._element.querySelector('.place__title').textContent = this._title;

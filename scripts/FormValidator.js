@@ -46,10 +46,8 @@ export default class FormValidator {
                 this._checkInputValidity(inputElement);
                 this.toggleButtonState(buttonElement, inputList);
             })
-            
         })
         this.toggleButtonState(buttonElement, inputList);
-
     }
 
     enableValidation = () => {

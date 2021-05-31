@@ -16,5 +16,5 @@
 
 .place__delete:hover {
     opacity: 0.6;
-    cursor: url(../../../images/Pointer.png), pointer;
+    cursor: pointer;
 }

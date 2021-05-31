@@ -18,7 +18,7 @@
 
 .popup__close:hover {
     opacity: 0.6;
-    cursor: url(../../../images/Pointer.png), pointer;
+    cursor: pointer;
 }
 
 @media (min-width: 1024px) {

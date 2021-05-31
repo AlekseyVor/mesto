@@ -29,11 +29,24 @@ const submitPlaceForm = (evt) => {
 
 const closePopup = (popup) => {
     popup.classList.remove ('popup_opened');
+    clearInput(popup);
     document.removeEventListener ('keydown', setEscapeEventListener);
 }
 
+const clearInput = (popup) => {
+    popup.querySelectorAll(config.inputSelector).forEach((inputElement) => {
+        inputElement.classList.remove(config.errorInputClass);
+        inputElement.value = '';
+    });
+    popup.querySelectorAll('.popup__input-error').forEach((errorElement) => {
+        errorElement.classList.remove(config.errorActiveClass);
+    });
+}
+
+
+
 export const setEscapeEventListener = (evt) => {
-    const openedPopup = document.querySelector ('.popup_opened');
+    const openedPopup = document.querySelector('.popup_opened');
     if(evt.key === 'Escape') {
         closePopup(openedPopup);
     }

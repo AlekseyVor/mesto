@@ -6,5 +6,5 @@
 
 
 .place__image:hover {
-    cursor: url(../../../images/Pointer.png), pointer;
+    cursor: pointer;
 }
