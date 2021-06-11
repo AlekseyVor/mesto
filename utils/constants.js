@@ -1,25 +1,35 @@
-export const popupProfile = document.querySelector ('#profile');
-export const popupPlace = document.querySelector ('#newplace');
-export const popupPhoto = document.querySelector ('#photo');
 export const popupButtonProfile = document.querySelector ('.profile__edit-button');
 export const popupButtonPlace = document.querySelector ('.profile__add-button');
-export const popupCloseButtons = document.querySelectorAll ('.popup__close')
-export const cardsContainer = document.querySelector ('.places');
-export const nameProfile = document.querySelector ('.profile__name');
-export const jobProfile = document.querySelector ('.profile__job');
 export const photoImg = document.querySelector ('.popup__img');
 export const photoTitle = document.querySelector ('.popup__title-img');
 export const nameInput = document.querySelector ('.popup__input_name');
 export const jobInput =  document.querySelector ('.popup__input_job');
-export const placeInput = document.querySelector ('.popup__input_place');
-export const urlInput = document.querySelector ('.popup__input_url');
-export const popupOverlays = document.querySelectorAll ('.popup__overlay');
 
 export const config = {
     errorActiveClass: 'popup__input-error_active',
     errorInputClass: 'popup__input_invalid',
+    errorInputSelector: '.popup__input-error',
     inputSelector: '.popup__input',
     submitSelector: '.popup__submit',
+    profileEditorSelector: '.profile-editor',
+    placeEditorSelector: '.place-editor',
+    nameSelector: '.profile__name',
+    jobSelector: '.profile__job',
+    cardTemplateDefault: '.card-template_type_default',
+    cardsContainerSelector: '.places',
+    popupPhotoSelector: '#photo',
+    popupProfileSelector: '#profile',
+    popupPlaceSelector: '#newplace',
+    cardSelector: '.place',
+    likeSelector: '.place__like',
+    likeActiveClass: 'place__like_active',
+    placeDeleteSelector: '.place__delete',
+    placeImageSelector: '.place__image',
+    placeTitleSelector: '.place__title',
+    popupActiveClass: 'popup_opened',
+    ESCAPE_KEY: 'Escape',
+    closeButtonSelector: '.popup__close',
+    formSelector: '.form'
 }
 
 export const initialCards = [

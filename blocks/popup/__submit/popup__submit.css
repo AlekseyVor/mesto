@@ -17,7 +17,7 @@
 
 .popup__submit:hover {
     opacity: 0.8;
-    cursor: url(../../../images/Pointer.png), pointer;
+    cursor: pointer;
 }
 
 .popup__submit:disabled {
