@@ -5,7 +5,6 @@ export default class PopupWithImage extends Popup {
         super(config, popupSelector)
         this._popupImg = document.querySelector(this._config.popupPhotoImgSelector);
         this._popupTitle = document.querySelector(this._config.popupPhotoTitleSelector);
-        this._handleEscClose = this._handleEscClose.bind(this);
     }
 
     open(image, title) {

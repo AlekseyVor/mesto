@@ -3,8 +3,8 @@ export default class PopupWithForm extends Popup {
     constructor(config, {popupSelector, handleFormSubmit}) {
     super(config, popupSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._handleEscClose = this._handleEscClose.bind(this);
     this._inputList = this._popup.querySelectorAll(this._config.inputSelector);
+    this._form = this._popup.querySelector(this._config.formSelector);
     }
 
     _getInputValues() {
@@ -26,7 +26,7 @@ export default class PopupWithForm extends Popup {
 
     close() {
         super.close();
-        this._popup.querySelector(this._config.formSelector).reset();
+        this._form.reset();
     }
 
 }

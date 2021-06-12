@@ -23,13 +23,13 @@ function inputProfileValue(userData) {
 popupButtonProfile.addEventListener ('click',() => {
     inputProfileValue(user.getUserInfo());
     formProfile.resetValidation();
-    formProfile.toggleButtonState(formProfile._formElement.querySelector(config.submitSelector), Array.from(formProfile._formElement.querySelectorAll(config.inputSelector)));
+    formProfile.toggleButtonState();
     popupProfile.open();
 });
 
 popupButtonPlace.addEventListener ('click',() => {
     formPlace.resetValidation();
-    formPlace.toggleButtonState(formPlace._formElement.querySelector(config.submitSelector), Array.from(formPlace._formElement.querySelectorAll(config.inputSelector)));
+    formPlace.toggleButtonState();
     popupPlace.open();
 });
 
