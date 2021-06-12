@@ -1,7 +1,5 @@
 export const popupButtonProfile = document.querySelector ('.profile__edit-button');
 export const popupButtonPlace = document.querySelector ('.profile__add-button');
-export const photoImg = document.querySelector ('.popup__img');
-export const photoTitle = document.querySelector ('.popup__title-img');
 export const nameInput = document.querySelector ('.popup__input_name');
 export const jobInput =  document.querySelector ('.popup__input_job');
 
@@ -29,7 +27,9 @@ export const config = {
     popupActiveClass: 'popup_opened',
     ESCAPE_KEY: 'Escape',
     closeButtonSelector: '.popup__close',
-    formSelector: '.form'
+    formSelector: '.form',
+    popupPhotoImgSelector: '.popup__img',
+    popupPhotoTitleSelector: '.popup__title-img'
 }
 
 export const initialCards = [

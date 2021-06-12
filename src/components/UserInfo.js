@@ -1,5 +1,3 @@
-import {nameInput,jobInput} from '../utils/constants.js';
-
 export default class UserInfo {
     constructor({nameSelector,jobSelector}) {
         this._name = document.querySelector(nameSelector);
@@ -19,8 +17,4 @@ export default class UserInfo {
         this._job.textContent = userInput.job;
     }
 
-    inputProfileValue(userData) {
-        nameInput.value = userData.username;
-        jobInput.value = userData.userjob; 
-    }
 }

@@ -26,7 +26,7 @@ export default class Card {
         this._element.remove();
         });
         this._element.querySelector(this._config.placeImageSelector).addEventListener('click', () => {
-        this._handleCardClick(this);
+        this._handleCardClick(this._image, this._title);
         });
     }
 

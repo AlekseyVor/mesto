@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 
 module.exports = {
-  entry: './pages/index.js',
+  entry: './src/pages/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
@@ -14,7 +14,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
-    open: true,
+    open: 'Google chrome',
   },
   module: {
     rules: [ // rules — это массив правил
@@ -47,7 +47,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html' // путь к файлу index.html
+      template: './src/index.html' // путь к файлу index.html
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),

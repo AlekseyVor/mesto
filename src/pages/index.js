@@ -5,15 +5,30 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import {popupButtonProfile,popupButtonPlace,config,initialCards} from '../utils/constants.js'
+import {popupButtonProfile,popupButtonPlace,config,initialCards,nameInput,jobInput} from '../utils/constants.js'
+
+function createCard(item) {
+    const card = new Card(config, item.name, item.link, config.cardTemplateDefault, (image, title) => {
+        popupWithImage.open(image, title);
+    })
+    return card.generateCard();
+}
+
+function inputProfileValue(userData) {
+    nameInput.value = userData.username;
+    jobInput.value = userData.userjob; 
+}
+
 
 popupButtonProfile.addEventListener ('click',() => {
-    user.inputProfileValue(user.getUserInfo());
+    inputProfileValue(user.getUserInfo());
+    formProfile.resetValidation();
     formProfile.toggleButtonState(formProfile._formElement.querySelector(config.submitSelector), Array.from(formProfile._formElement.querySelectorAll(config.inputSelector)));
     popupProfile.open();
 });
 
 popupButtonPlace.addEventListener ('click',() => {
+    formPlace.resetValidation();
     formPlace.toggleButtonState(formPlace._formElement.querySelector(config.submitSelector), Array.from(formPlace._formElement.querySelectorAll(config.inputSelector)));
     popupPlace.open();
 });
@@ -24,20 +39,15 @@ const user = new UserInfo({nameSelector: config.nameSelector,jobSelector: config
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
-        const card = new Card(config, item.name, item.link,config.cardTemplateDefault, (card) => {
-            popupWithImage.open(card);
-        }).generateCard();
-        cardList.addItem(card);
+        cardList.addItem(createCard(item));
     }
 }, config.cardsContainerSelector)
 export const popupWithImage = new PopupWithImage(config, config.popupPhotoSelector);
 const popupProfile = new PopupWithForm(config, {popupSelector: config.popupProfileSelector,handleFormSubmit: (formData) => {
     user.setUserInfo(formData);
 }});
-const popupPlace = new PopupWithForm(config, {popupSelector: config.popupPlaceSelector,handleFormSubmit: (formData) => {
-    const card = new Card(config, formData.place, formData.url, config.cardTemplateDefault, (card) => {
-        popupWithImage.open(card);}).generateCard();
-    cardList.addItem(card);
+const popupPlace = new PopupWithForm(config, {popupSelector: config.popupPlaceSelector,handleFormSubmit: (item) => {
+    cardList.addItem(createCard(item));
 }});
 
 formProfile.enableValidation();
@@ -46,4 +56,3 @@ popupProfile.setEventListeners();
 popupPlace.setEventListeners();
 popupWithImage.setEventListeners();
 cardList.renderItems();
-
