@@ -89,7 +89,7 @@ const popupProfile = new PopupWithForm(config, {popupSelector: config.popupProfi
 }});
 const popupPlace = new PopupWithForm(config, {popupSelector: config.popupPlaceSelector, handleFormSubmit: (item) => {
     api.submitStart(popupPlace._form);
-    Promise.all([api.getUserInfo(config.urlMe, config.methodGET, config.token),api.postNewCard(config.urlCards, config.methodPOST, config.token, çitem)])
+    Promise.all([api.getUserInfo(config.urlMe, config.methodGET, config.token),api.postNewCard(config.urlCards, config.methodPOST, config.token, item)])
     .then(([userData, card]) => {
         cardList.addItem(createCard(card, userData));
         })
