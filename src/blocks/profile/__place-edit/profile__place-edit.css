@@ -1,4 +1,4 @@
-.profile__place__button {
+.profile__place-edit {
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 2px;
@@ -12,13 +12,13 @@
     transition: opacity 0.8s ease-in-out;
 }
 
-.profile__place__button:hover {
+.profile__place-edit:hover {
     opacity: 0.5;
     cursor: pointer;
 }
 
 @media (min-width: 1024px) {
-    .profile__place__button {
+    .profile__place-edit {
         width: 150px;
         margin-left: auto;
     }

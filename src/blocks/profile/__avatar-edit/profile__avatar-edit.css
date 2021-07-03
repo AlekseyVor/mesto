@@ -1,4 +1,4 @@
-.profile__avatar__button {
+.profile__avatar-edit {
     padding: 0;
     margin: 0;
     background-color: black;
@@ -10,7 +10,7 @@
 }
 
 
-.profile__avatar__button::after {
+.profile__avatar-edit::after {
     background-image: url(../../../../images/vector.svg);
     background-position: center;
     background-repeat: no-repeat;

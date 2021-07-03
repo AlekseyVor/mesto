@@ -12,9 +12,9 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__job/profile__job.css);
-@import url(../blocks/profile/__user/__button/profile__user__button.css);
-@import url(../blocks/profile/__place/__button/profile__place__button.css);
-@import url(../blocks/profile/__avatar/__button/profile__avatar__button.css);
+@import url(../blocks/profile/__user-edit/profile__user-edit.css);
+@import url(../blocks/profile/__place-edit/profile__place-edit.css);
+@import url(../blocks/profile/__avatar-edit/profile__avatar-edit.css);
 
 @import url(../blocks/places/places.css);
 @import url(../blocks/place/place.css);
