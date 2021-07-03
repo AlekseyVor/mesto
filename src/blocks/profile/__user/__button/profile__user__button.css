@@ -1,4 +1,4 @@
-.profile__button_user {
+.profile__user__button {
     width: 18px;
     height: 18px;
     border: 1px solid #FFFFFF;
@@ -11,13 +11,13 @@
     transition: opacity 0.8s ease-in-out;
 }
 
-.profile__button_user:hover {
+.profile__user__button:hover {
     opacity: 0.6;
     cursor: pointer;
 }
 
 @media (min-width: 1024px) {
-    .profile__button_user {
+    .profile__user__button {
         width: 24px;
         height: 24px;
     }

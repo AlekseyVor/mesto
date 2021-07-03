@@ -1,5 +1,5 @@
-export const popupButtonProfile = document.querySelector ('.profile__button_user');
-export const popupButtonPlace = document.querySelector ('.profile__button_place');
+export const popupButtonProfile = document.querySelector ('.profile__user__button');
+export const popupButtonPlace = document.querySelector ('.profile__place__button');
 export const popupButtonAvatar = document.querySelector ('.profile__avatar');
 export const nameInput = document.querySelector ('.popup__input_name');
 export const jobInput =  document.querySelector ('.popup__input_job');
