@@ -44,8 +44,8 @@ function createCard(item, user) {
 }
 
 function inputProfileValue(userData) {
-    nameInput.value = userData.name;
-    jobInput.value = userData.about; 
+    nameInput.value = userData.username;
+    jobInput.value = userData.userjob; 
 }
 
 popupButtonProfile.addEventListener ('click',() => {
@@ -101,7 +101,7 @@ const popupPlace = new PopupWithForm(config, {popupSelector: config.popupPlaceSe
 }});
 const popupAvatar = new PopupWithForm(config, {popupSelector: config.popupAvatarSelector, handleFormSubmit: (formData) => {
     api.submitStart(popupAvatar._form);
-    api.patchUserAvatar(config.urlAvatar, config.methodPATCH, config.token, formData.url)
+    api.patchUserAvatar(config.urlAvatar, config.methodPATCH, config.token, formData['url-avatar'])
     .then((res) => { 
     user.setUserAvatar(res);
     })
