@@ -11,7 +11,7 @@
 
 
 .profile__avatar-edit::after {
-    background-image: url(../../../../images/vector.svg);
+    background-image: url(../../../images/vector.svg);
     background-position: center;
     background-repeat: no-repeat;
     content: "";
