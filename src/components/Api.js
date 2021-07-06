@@ -22,27 +22,20 @@ export default class Api {
         }})
     }
 
-    submitStart = (popup) => {
-    this._text = popup.querySelector(this._config.submitSelector).textContent
-    popup.querySelector(this._config.submitSelector).textContent = this._config.loadingText;
-    return this._text
-    }
-
-    submitEnd = (popup) => {
-      popup.querySelector(this._config.submitSelector).textContent = this._text;
+    _checkResponse = (res) => {
+      if(res.ok) {return res.json()}
+      return Promise.reject(`Ошибка ${res.status}`)
     }
 
     getUserInfo = (url, type, token) => {
       return this._search(url, type, token)
-      .then((res) => {if(res.ok) {return res.json()}
-      return Promise.reject(`Ошибка ${res.status}`)})
+      .then((res) => {return this._checkResponse(res)})
       
   }
 
     getInitialCards = (url, type, token) => {
       return this._search(url, type, token)
-      .then((res) => {if(res.ok) {return res.json()}
-      return Promise.reject(`Ошибка ${res.status}`)});
+      .then((res) => {return this._checkResponse(res)});
   }
 
     patchUserInfo = (url, type, token, userInfo) => {
@@ -57,8 +50,7 @@ export default class Api {
         about: `${userInfo.about}`
       })
     })
-    .then((res) => {if(res.ok) {return res.json()}
-    return Promise.reject(`Ошибка ${res.status}`)});
+    .then((res) => {return this._checkResponse(res)});
 }
 
   postNewCard = (url, type, token, card) => {
@@ -73,20 +65,17 @@ export default class Api {
         link: `${card.url}`
       })
     })
-    .then((res) => {if(res.ok) {return res.json()}
-    return Promise.reject(`Ошибка ${res.status}`)});
+    .then((res) => {return this._checkResponse(res)});
 }
 
   deleteCard = (url, type, token, cardid) => {
     return this._searchCardId(url, type, token, cardid)
-      .then((res) => {if(res.ok) {return res.json()}
-      return Promise.reject(`Ошибка ${res.status}`)});
+    .then((res) => {return this._checkResponse(res)});
   }
 
   updateLike = (url, type, token, cardid) => {
     return this._searchCardId(url, type, token, cardid)
-      .then((res) => {if(res.ok) {return res.json()}
-      return Promise.reject(`Ошибка ${res.status}`)});
+    .then((res) => {return this._checkResponse(res)});
   }
 
   patchUserAvatar = (url, type, token, avatar) => {
@@ -100,7 +89,6 @@ export default class Api {
         avatar: `${avatar}`,
       })
     })
-    .then((res) => {if(res.ok) {return res.json()}
-    return Promise.reject(`Ошибка ${res.status}`)});
+    .then((res) => {return this._checkResponse(res)});
   }
 }

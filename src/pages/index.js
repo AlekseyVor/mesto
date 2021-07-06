@@ -27,13 +27,15 @@ function createCard(item, user) {
                 .catch((err) => {console.log(err)});; 
             }},
         () => { popupDelete.setConfirmHandler(() => {
+            popupDelete.renderLoading(true);
             api.deleteCard(config.urlCards, config.methodDELETE, config.token, item._id)
             .then(() => { 
                 card.deleteCard();
+                popupDelete.close();
             })
             .catch((err) => {console.log(err)})
             .finally(() => {
-                popupDelete.close();
+                popupDelete.renderLoading(false);
             })
             })
             popupDelete.open();
@@ -60,8 +62,8 @@ popupButtonPlace.addEventListener ('click',() => {
 });
 
 popupButtonAvatar.addEventListener ('click',() => {
-formAvatar.resetValidation();
-popupAvatar.open();
+    formAvatar.resetValidation();
+    popupAvatar.open();
 })
 
 const formProfile = new FormValidator(config, config.profileEditorSelector);
@@ -76,39 +78,39 @@ const cardList = new Section({
 }, config.cardsContainerSelector);
 export const popupWithImage = new PopupWithImage(config, config.popupPhotoSelector);
 const popupProfile = new PopupWithForm(config, {popupSelector: config.popupProfileSelector, handleFormSubmit: (formData) => {
-    api.submitStart(popupProfile._form)
+    popupProfile.renderLoading(true);
     api.patchUserInfo(config.urlMe, config.methodPATCH, config.token,formData)
     .then((res) => { 
         user.setUserInfo(res);
+        popupProfile.close();
     })
     .catch((err) => {console.log(err)})
     .finally(() => {
-        popupProfile.close();
-        api.submitEnd(popupProfile._form);
+        popupProfile.renderLoading(false);
     })
 }});
 const popupPlace = new PopupWithForm(config, {popupSelector: config.popupPlaceSelector, handleFormSubmit: (item) => {
-    api.submitStart(popupPlace._form);
-    Promise.all([api.getUserInfo(config.urlMe, config.methodGET, config.token),api.postNewCard(config.urlCards, config.methodPOST, config.token, item)])
-    .then(([userData, card]) => {
-        cardList.addItem(createCard(card, userData));
+    popupPlace.renderLoading(true);
+    api.postNewCard(config.urlCards, config.methodPOST, config.token, item)
+    .then((card) => {
+        cardList.addItem(createCard(card, user.getId()));
+        popupPlace.close();
         })
     .catch((err) => {console.log(err)})
     .finally(() => {
-        popupPlace.close();
-        api.submitEnd(popupPlace._form);
+        popupPlace.renderLoading(false);
     })
 }});
 const popupAvatar = new PopupWithForm(config, {popupSelector: config.popupAvatarSelector, handleFormSubmit: (formData) => {
-    api.submitStart(popupAvatar._form);
+    popupAvatar.renderLoading(true);
     api.patchUserAvatar(config.urlAvatar, config.methodPATCH, config.token, formData['url-avatar'])
     .then((res) => { 
-    user.setUserAvatar(res);
+        user.setUserAvatar(res);
+        popupAvatar.close();
     })
     .catch((err) => {console.log(err)})
     .finally(() => {
-        popupAvatar.close();
-        api.submitEnd(popupAvatar._form);
+        popupAvatar.renderLoading(false);
     })
 }});
 const popupDelete = new PopupConfirm(config, config.poupDeleteSelector);
@@ -136,6 +138,11 @@ Promise.all([api.getUserInfo(config.urlMe, config.methodGET, config.token),api.g
 .then(([userData, cards]) => {
 user.setUserInfo(userData);
 user.setUserAvatar(userData);
+user.setId(userData);
 cards.forEach(i => {
 cardList.addInitialItems(createCard(i, userData))})})
 .catch((err) => {console.log(err)});
+
+
+
+
