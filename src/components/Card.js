@@ -8,6 +8,7 @@ export default class Card {
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardClick = handleCardClick;
     
+    
     }
 
     _getTemplate() {
@@ -38,6 +39,7 @@ export default class Card {
     updateLike(likes) {
         this._element.querySelector('.place__like').classList.toggle(this._config.likeActiveClass);
         this._element.querySelector('.place__likes').textContent = likes.likes.length;
+        this._cardData.likes = likes.likes;
     }
 
     generateCard() {

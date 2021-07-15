@@ -29,13 +29,13 @@ export default class Api {
 
     getUserInfo = (url, type, token) => {
       return this._search(url, type, token)
-      .then((res) => {return this._checkResponse(res)})
+      .then(this._checkResponse)
       
   }
 
     getInitialCards = (url, type, token) => {
       return this._search(url, type, token)
-      .then((res) => {return this._checkResponse(res)});
+      .then(this._checkResponse);
   }
 
     patchUserInfo = (url, type, token, userInfo) => {
@@ -50,7 +50,7 @@ export default class Api {
         about: `${userInfo.about}`
       })
     })
-    .then((res) => {return this._checkResponse(res)});
+    .then(this._checkResponse);
 }
 
   postNewCard = (url, type, token, card) => {
@@ -65,17 +65,17 @@ export default class Api {
         link: `${card.url}`
       })
     })
-    .then((res) => {return this._checkResponse(res)});
+    .then(this._checkResponse);
 }
 
   deleteCard = (url, type, token, cardid) => {
     return this._searchCardId(url, type, token, cardid)
-    .then((res) => {return this._checkResponse(res)});
+    .then(this._checkResponse);
   }
 
   updateLike = (url, type, token, cardid) => {
     return this._searchCardId(url, type, token, cardid)
-    .then((res) => {return this._checkResponse(res)});
+    .then(this._checkResponse);
   }
 
   patchUserAvatar = (url, type, token, avatar) => {
@@ -89,6 +89,6 @@ export default class Api {
         avatar: `${avatar}`,
       })
     })
-    .then((res) => {return this._checkResponse(res)});
+    .then(this._checkResponse);
   }
 }

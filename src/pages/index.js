@@ -14,16 +14,11 @@ function createCard(item, user) {
         () => { 
             if(item.likes.some(i => i._id === user._id)) {
                 api.updateLike(config.urlLikes, config.methodDELETE, config.token,item._id)
-                .then((res) => {
-                card.updateLike(res);
-                return item.likes = res.likes})
+                .then((res) => {card.updateLike(res)})
                 .catch((err) => {console.log(err)});;
             } else {
                 api.updateLike(config.urlLikes, config.methodPUT, config.token,item._id)
-                .then((res) => {
-                card.updateLike(res);
-                return item.likes = res.likes;
-                })
+                .then((res) => {card.updateLike(res)})
                 .catch((err) => {console.log(err)});; 
             }},
         () => { popupDelete.setConfirmHandler(() => {
